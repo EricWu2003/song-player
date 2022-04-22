@@ -2,11 +2,11 @@ from asyncore import read
 import json
 
 
-FILE_IN = "lyrics/Fearless--Mr. Perfectly Fine.txt"
-FILE_OUT = "lyrics-compiled/Fearless--Mr. Perfectly Fine.txt"
+f1 = "lyrics/Fearless--Mr. Perfectly Fine.txt"
+f2 = "lyrics-compiled/Fearless--Mr. Perfectly Fine.txt"
 
 
-def read_file():
+def read_file(FILE_IN):
 
     words = []
     sections = {}
@@ -41,4 +41,4 @@ def read_file():
     
     return words, sections
         
-print(read_file())
+print(read_file(f1))
