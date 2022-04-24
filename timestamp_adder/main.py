@@ -16,13 +16,13 @@ while running:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			running = False
-		elif event.type == pygame.KEYDOWN:
-			#pass the event to the AudioWindow
-			a.handleEvent(event)
-			
+		elif event.type == pygame.KEYDOWN:	
+			a.handleKeyDownEvent(event)
+		elif event.type == pygame.MOUSEBUTTONDOWN:
+			if AudioWindow.WIN_RECT.collidepoint(event.pos) and event.button == 1:
+				a.handleLeftClickEvent(event)
 
 
-	print(f"position: {m.get_pos()}")
 
 	screen.fill((255, 255, 255))
 	a.draw()

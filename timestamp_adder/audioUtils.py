@@ -30,9 +30,10 @@ class musicPlayer:
         self.is_paused = True
         self.music.pause()
     def set_pos(self, pos):
-        self.start_pos = pos*1000
+        #input in milliseconds
+        self.start_pos = pos
         self.initial_get_pos = self.music.get_pos()
-        self.music.set_pos(pos)
+        self.music.set_pos(pos/1000)
     def get_pos(self):
         #returns current position in milliseconds
         return (self.music.get_pos() - self.initial_get_pos + self.start_pos) % (self.length)
