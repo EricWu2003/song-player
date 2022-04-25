@@ -22,10 +22,10 @@ class AudioWindow:
 		self.timestamps = list(range(0, int(self.musicPlayer.length), 5000))
 	def draw(self):
 		pygame.draw.rect(self.screen, (0,0,0), AudioWindow.WIN_RECT)
-		pygame.draw.line(self.screen, (255,0,0), (AudioWindow.XMID, AudioWindow.YMIN), (AudioWindow.XMID, AudioWindow.YMAX))
 		for t in self.timestamps:
 			x_coord = self.convertTimeToScreenPos(t)
 			pygame.draw.line(self.screen, (0,255,0), (x_coord, AudioWindow.YMIN), (x_coord, AudioWindow.YMAX))
+		pygame.draw.line(self.screen, (255,0,0), (AudioWindow.XMID, AudioWindow.YMIN), (AudioWindow.XMID, AudioWindow.YMAX))
 
 	def convertTimeToScreenPos(self, time):
 		#time input in milliseconds
