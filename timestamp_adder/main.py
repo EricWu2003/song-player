@@ -21,10 +21,9 @@ while running:
 		elif event.type == pygame.MOUSEBUTTONDOWN:
 			if AudioWindow.WIN_RECT.collidepoint(event.pos) and event.button == 1:
 				a.handleLeftClickEvent(event)
-			if AudioWindow.WIN_RECT.collidepoint(event.pos) and (event.button == 4 or event.button == 5):
+			elif AudioWindow.WIN_RECT.collidepoint(event.pos) and (event.button == 4 or event.button == 5):
 				a.handleScrollEvent(event)
 
-	print(f"Scale: {a.scale}, Win Start Pos: {a.window_start_pos}")
 
 	screen.fill((255, 255, 255))
 	a.draw()
