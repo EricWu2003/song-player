@@ -57,7 +57,7 @@ def read_file(FILE_IN):
 			
 			filteredLine = ""
 			for char in line:
-				if char in {'"', "'", "(", ")", ",", "."}: #we filter out these characters
+				if char in {'"', "'", "(", ")", ",", ".", "?", "!"}: #we filter out these characters
 					continue
 				filteredLine += char
 			words += list(filteredLine.split())
@@ -86,6 +86,8 @@ for album in album_titles:
 		song_dirs[f"{album_formatted}--{name}"] = os.path.join(raw_lyric_dir, album, path)
 os.chdir(working_dir)
 os.chdir(comp_lyric_dir)
+for d in all_lyrics.keys():
+	all_lyrics[d] = [w.lower() for w in all_lyrics[d]]
 # with open("lyrics.json", "w") as f:
 # 	f.write(json.dumps(all_lyrics))
 # with open("raw-lyric-dirs.json", "w") as f:
