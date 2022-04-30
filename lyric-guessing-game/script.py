@@ -22,7 +22,7 @@ def format_song_title(song):
 	name = " ".join([word.capitalize() for word in name.split("-")])
 	return f"{album} : {name}"
 
-def show_song(song, wordlist):
+def show_song(song, wordlist, showOnlyColoredLines = False):
 	with open(song_dir_list[song]) as f:
 		full_lyrics = f.read()
 	lyrics_with_color = ""
@@ -45,12 +45,17 @@ def show_song(song, wordlist):
 			if filtered_word.lower() in wordlist:
 				in_color[index] = True
 
+		line = ""
 		for word, is_in_color in zip(words, in_color):
 			if not is_in_color:
-				lyrics_with_color += f"{word} "
+				line += f"{word} "
 			else:
-				lyrics_with_color += f"\033[1;32m{word}\033[1;00m "
-		lyrics_with_color += '\n'
+				line += f"\033[1;32m{word}\033[1;00m "
+		if showOnlyColoredLines:
+			if any(in_color):
+				lyrics_with_color += line + '\n'
+		else:
+			lyrics_with_color += line + '\n'
 	print(lyrics_with_color)
 
 
@@ -72,6 +77,9 @@ while True:
 		print(f"The answer was: \033[1;34m{format_song_title(song_to_guess)}\033[1;00m")
 	elif action == "show":
 		show_song(song_to_guess, words_shown)
+		print(f"The answer was: \033[1;34m{format_song_title(song_to_guess)}\033[1;00m")
+	elif action == "show -l":
+		show_song(song_to_guess, words_shown, True)
 		print(f"The answer was: \033[1;34m{format_song_title(song_to_guess)}\033[1;00m")
 	elif action == "n":
 		print("---")
