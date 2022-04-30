@@ -72,6 +72,7 @@ album_titles = [name for name in os.listdir(".") if os.path.isdir(name)]
 
 os.chdir(working_dir)
 all_lyrics = {}
+song_dirs = {}
 for album in album_titles:
 	os.chdir(join(working_dir, raw_lyric_dir, album))
 	for path in os.listdir("."):
@@ -82,10 +83,14 @@ for album in album_titles:
 		album_formatted = album.partition("_")[2]
 		name = os.path.splitext(path.partition("_")[2])[0]
 		all_lyrics[f"{album_formatted}--{name}"] = read_file(path)
+		song_dirs[f"{album_formatted}--{name}"] = os.path.join(raw_lyric_dir, album, path)
 os.chdir(working_dir)
 os.chdir(comp_lyric_dir)
 # with open("lyrics.json", "w") as f:
 # 	f.write(json.dumps(all_lyrics))
+# with open("raw-lyric-dirs.json", "w") as f:
+# 	f.write(json.dumps(song_dirs))
+
 
 #now we do word-analysis to generate a dictionary to tell us how many songs each word appears in.
 #first we convert the lyrics to sets to make lookup faster
@@ -102,8 +107,8 @@ for word in all_words:
 			count += 1
 	word_frequencies[word] = count
 
-with open("word-frequencies.json", "w") as f:
-	f.write(json.dumps(word_frequencies))
+# with open("word-frequencies.json", "w") as f:
+# 	f.write(json.dumps(word_frequencies))
 
 
 
