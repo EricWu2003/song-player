@@ -1,5 +1,7 @@
 import os, json, random
 from os.path import join
+
+from numpy import full
 comp_lyrics_dir = "lyric-guessing-game/lyrics-compiled"
 lyrics_dir = "lyric-guessing-game/lyrics"
 
@@ -23,7 +25,33 @@ def format_song_title(song):
 def show_song(song, wordlist):
 	with open(song_dir_list[song]) as f:
 		full_lyrics = f.read()
-	print(full_lyrics)
+	lyrics_with_color = ""
+	for line in full_lyrics.split("\n"):
+		line = line.strip()
+		if line == "":
+			lyrics_with_color += '\n'
+			continue
+		if line.startswith("["):
+			lyrics_with_color += f"\033[35m{line}\033[0m" + '\n'
+			continue
+		words = line.split()
+		in_color = [False for _ in words]
+		for index, word in enumerate(words):
+			filtered_word = ""
+			for char in word:
+				if char in {'"', "'", "(", ")", ",", ".", "?", "!"}:
+					continue
+				filtered_word += char
+			if filtered_word.lower() in wordlist:
+				in_color[index] = True
+
+		for word, is_in_color in zip(words, in_color):
+			if not is_in_color:
+				lyrics_with_color += f"{word} "
+			else:
+				lyrics_with_color += f"\033[1;32m{word}\033[1;00m "
+		lyrics_with_color += '\n'
+	print(lyrics_with_color)
 
 
 os.chdir(working_dir)
@@ -44,6 +72,7 @@ while True:
 		print(f"The answer was: \033[1;34m{format_song_title(song_to_guess)}\033[1;00m")
 	elif action == "show":
 		show_song(song_to_guess, words_shown)
+		print(f"The answer was: \033[1;34m{format_song_title(song_to_guess)}\033[1;00m")
 	elif action == "n":
 		print("---")
 		song_to_guess = random.choice(list(song_dir_list.keys()))
