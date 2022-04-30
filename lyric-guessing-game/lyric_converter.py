@@ -35,9 +35,6 @@ def normalize(FILE_IN):
 
 
 def read_file(FILE_IN):
-	if ("i-think-he-knows" in FILE_IN):
-		print("HI")
-
 	words = []
 	with open(FILE_IN, 'r') as f:
 		for currLine, line in enumerate(f.readlines()):
@@ -66,7 +63,7 @@ def read_file(FILE_IN):
 			words += list(filteredLine.split())
 			
 	
-	return words
+	return list(set(words)) #remove duplicates
 
 os.chdir(working_dir)
 os.chdir(raw_lyric_dir)
@@ -87,8 +84,27 @@ for album in album_titles:
 		all_lyrics[f"{album_formatted}--{name}"] = read_file(path)
 os.chdir(working_dir)
 os.chdir(comp_lyric_dir)
-with open("lyrics.json", "w") as f:
-	f.write(json.dumps(all_lyrics))
+# with open("lyrics.json", "w") as f:
+# 	f.write(json.dumps(all_lyrics))
+
+#now we do word-analysis to generate a dictionary to tell us how many songs each word appears in.
+#first we convert the lyrics to sets to make lookup faster
+all_lyrics = {key: set(value) for (key, value) in all_lyrics.items()} 
+all_words = set()
+for lyric_set in all_lyrics.values():
+	all_words.update({w.lower() for w in lyric_set})
+
+word_frequencies = {}
+for word in all_words:
+	count = 0
+	for lyric_set in all_lyrics.values():
+		if word in lyric_set:
+			count += 1
+	word_frequencies[word] = count
+
+with open("word-frequencies.json", "w") as f:
+	f.write(json.dumps(word_frequencies))
+
 
 
 print("DONE")
