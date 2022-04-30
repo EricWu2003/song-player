@@ -1,12 +1,42 @@
 import json
 import os
 from os.path import join
+import unicodedata
 
 raw_lyric_dir = "lyric-guessing-game/lyrics"
 comp_lyric_dir = "lyric-guessing-game/lyrics-compiled"
 working_dir = "/Users/ericwu/Desktop/song-player"
 
+
+NON_ASCII = []
+def normalize(FILE_IN):
+	with open(FILE_IN, 'r') as f:
+		lyrics = f.read()
+		# for char in lyrics:
+		# 	if 0 <= ord(char) <= 127:
+		# 		pass #this is an ascii character
+		# 	else:
+		# 		print(char)
+		# 		if char not in NON_ASCII:
+		# 			NON_ASCII.append(char)
+		lyrics = lyrics.replace("е", "e")
+		lyrics = lyrics.replace("”", "\"")
+		lyrics = lyrics.replace("“", "\"")
+		lyrics = lyrics.replace("’", "\'")
+		lyrics = lyrics.replace("\u2005", " ")
+		lyrics = lyrics.replace("\u205f", " ")
+		lyrics = lyrics.replace("\u200b", " ")
+		lyrics = lyrics.replace("—", "-") # this is a long dash
+		lyrics = lyrics.replace("–", "-") # this is a different long dash
+		lyrics = lyrics.replace("…", "...")
+
+	with open(FILE_IN, 'w') as f:
+		f.write(lyrics)
+
+
 def read_file(FILE_IN):
+	if ("i-think-he-knows" in FILE_IN):
+		print("HI")
 
 	words = []
 	with open(FILE_IN, 'r') as f:
@@ -30,11 +60,10 @@ def read_file(FILE_IN):
 			
 			filteredLine = ""
 			for char in line:
-				if char in ('"', "'", "(", ")", ",", "."): #we filter out these characters
+				if char in {'"', "'", "(", ")", ",", "."}: #we filter out these characters
 					continue
 				filteredLine += char
 			words += list(filteredLine.split())
-			words += list(line.split(' '))
 			
 	
 	return words
@@ -51,11 +80,11 @@ for album in album_titles:
 	for path in os.listdir("."):
 		if not os.path.isfile(path):
 			continue
-		print(album, path)
-
-	album_formatted = album.partition("_")[2]
-	name = os.path.splitext(path.partition("_")[2])[0]
-	all_lyrics[f"{album_formatted}--{name}"] = read_file(path)
+		normalize(path)
+		
+		album_formatted = album.partition("_")[2]
+		name = os.path.splitext(path.partition("_")[2])[0]
+		all_lyrics[f"{album_formatted}--{name}"] = read_file(path)
 os.chdir(working_dir)
 os.chdir(comp_lyric_dir)
 with open("lyrics.json", "w") as f:
