@@ -26,6 +26,10 @@ while running:
 				a.handleLeftClickEvent(event)
 			elif AudioWindow.WIN_RECT.collidepoint(event.pos) and (event.button == 4 or event.button == 5):
 				a.handleScrollEvent(event)
+		elif event.type == pygame.MOUSEMOTION:
+			a.handleMouseMotionEvent(event)
+		elif event.type == pygame.MOUSEBUTTONUP:
+			a.handleMouseUpEvent(event)
 
 
 	screen.fill((255, 255, 255))

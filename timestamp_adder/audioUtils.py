@@ -18,7 +18,7 @@ class musicPlayer:
             self.is_paused = False
             self.music.unpause()
         
-        #these two variables are used to calculate the currrent position
+        #these two variables are used to calculate the current position
         self.start_pos = 0
         self.initial_get_pos = 0
         self.seconds_playing_at_start = self.music.get_pos()

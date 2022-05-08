@@ -31,11 +31,31 @@ class AudioWindow:
 			print("Importing timestamps from previous save")
 			with open(export_path) as f:
 				self.timestamps = [i[0] for i in json.load(f)]
+		self.dragRects = []
+		self.dragIndices = []
+		self.dragIndex = -1 # a dragIndex of -1 means nothing is being dragged
+		self.dragLimits = (None, None)
 	def draw(self):
 		pygame.draw.rect(self.screen, (0,0,0), AudioWindow.WIN_RECT)
-		for t in self.timestamps:
+
+		min_time_to_draw = self.convertScreenPosToTime(AudioWindow.XMIN)
+		max_time_to_draw = self.convertScreenPosToTime(AudioWindow.XMAX)
+
+		self.dragRects = []
+		self.dragIndices = []
+		for index,t in enumerate(self.timestamps):
+			if t < min_time_to_draw:
+				continue
+			if t > max_time_to_draw:
+				break
 			x_coord = self.convertTimeToScreenPos(t)
 			pygame.draw.line(self.screen, (0,255,0), (x_coord, AudioWindow.YMIN), (x_coord, AudioWindow.YMAX))
+			size = (15,20)
+			dragRect = pygame.Rect((x_coord - size[0]/2, AudioWindow.YMIN, 
+				size[0], size[1]))
+			self.dragRects.append(dragRect)
+			self.dragIndices.append(index)
+			pygame.draw.rect(self.screen, (0,255,255), dragRect)
 		pygame.draw.line(self.screen, (255,0,0), (AudioWindow.XMID, AudioWindow.YMIN), (AudioWindow.XMID, AudioWindow.YMAX))
 		
 		currWordIndex = self.getCurrWordIndex()
@@ -79,10 +99,29 @@ class AudioWindow:
 	def handleLeftClickEvent(self, event):
 		# set the position of the music player to whereever the user clicked,
 		# if the click is within the range of the music
+		for index, rect in zip(self.dragIndices, self.dragRects):
+			if rect.collidepoint(event.pos) and self.musicPlayer.is_paused:
+				self.dragIndex = index
+				min_limit = 0 if index == 0 else self.timestamps[index-1]
+				max_limit = self.musicPlayer.length if index == len(self.timestamps) - 1 else self.timestamps[index+1]
+				self.dragLimits = (min_limit, max_limit)
+				return
 		new_pos = self.convertScreenPosToTime(event.pos[0])
 		# print(new_pos)
 		if 0 < new_pos and new_pos < self.musicPlayer.length:
 			self.musicPlayer.set_pos(new_pos)
+
+	def handleMouseMotionEvent(self, event):
+		if self.dragIndex == -1:
+			return
+		position = self.convertScreenPosToTime(event.pos[0])
+		position = max(self.dragLimits[0], position)
+		position = min(self.dragLimits[1], position)
+		self.timestamps[self.dragIndex] = position
+	
+	def handleMouseUpEvent(self, event):
+		self.dragIndex = -1
+		self.dragLimits = (None, None)
 
 	def handleScrollEvent(self, event):
 		if event.button == 4:
