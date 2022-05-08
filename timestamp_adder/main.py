@@ -1,15 +1,18 @@
 import pygame
 import audioUtils
 from audioWindow import AudioWindow
+import json
 
 pygame.init()
 pygame.mixer.init()
 
 screen = pygame.display.set_mode([1000, 300])
+pygame.display.set_caption('Fearless!')
 m = audioUtils.musicPlayer('./ogg/Fearless--Mr. Perfectly Fine.ogg')
-a = AudioWindow(screen, m)
 
-
+with open('./lyrics-compiled/Fearless--Mr. Perfectly Fine.txt') as f:
+	lyrics = json.load(f)['words']
+a = AudioWindow(screen, m, lyrics)
 
 running = True
 while running:

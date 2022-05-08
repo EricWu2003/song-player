@@ -1,3 +1,4 @@
+from sqlite3 import Timestamp
 import pygame
 
 class AudioWindow:
@@ -13,19 +14,31 @@ class AudioWindow:
 	MAXSCALE = 100
 	SCROLL_FACTOR = 1.07
 
-	def __init__(self, screen, musicPlayer):
+	def __init__(self, screen, musicPlayer, lyrics):
 		self.screen = screen
 		self.musicPlayer = musicPlayer
 
 		self.scale = 1
 
-		self.timestamps = list(range(0, int(self.musicPlayer.length), 5000))
+		self.timestamps = [0]
+		self.bigFont = pygame.font.Font('freesansbold.ttf', 32)
+		self.smallFont = pygame.font.Font('freesansbold.ttf', 17)
+		self.lyrics = lyrics
 	def draw(self):
 		pygame.draw.rect(self.screen, (0,0,0), AudioWindow.WIN_RECT)
 		for t in self.timestamps:
 			x_coord = self.convertTimeToScreenPos(t)
 			pygame.draw.line(self.screen, (0,255,0), (x_coord, AudioWindow.YMIN), (x_coord, AudioWindow.YMAX))
 		pygame.draw.line(self.screen, (255,0,0), (AudioWindow.XMID, AudioWindow.YMIN), (AudioWindow.XMID, AudioWindow.YMAX))
+		
+		currWordIndex = self.getCurrWordIndex()
+		currWordText = self.bigFont.render(self.lyrics[currWordIndex], True, (0,0,0))
+		self.screen.blit(currWordText, (0,0))
+		
+		nextFewWords = " ".join(self.lyrics[currWordIndex:currWordIndex+20])
+		nextFewWordsText = self.smallFont.render(nextFewWords, True, (0,0,0))
+		self.screen.blit(nextFewWordsText, (AudioWindow.XMIN, AudioWindow.YMAX))
+
 
 	def convertTimeToScreenPos(self, time):
 		#time input in milliseconds
@@ -44,6 +57,15 @@ class AudioWindow:
 				m.pause()
 			else:
 				m.unpause()
+		elif event.key == pygame.K_RSHIFT: #if the right shift key is pressed
+			
+			if self.getCurrWordIndex() == len(self.lyrics) - 1:
+				# If we are at the end of the lyrics
+				return
+			if self.getCurrWordIndex() < len(self.timestamps)-1:
+				# If we are somewhere in the middle
+				return
+			self.timestamps.append(self.musicPlayer.get_pos())
 
 	def handleLeftClickEvent(self, event):
 		# set the position of the music player to whereever the user clicked,
@@ -63,5 +85,10 @@ class AudioWindow:
 			if self.scale > 1:
 				self.scale /= AudioWindow.SCROLL_FACTOR
 
-		
+	def getCurrWordIndex(self):
+		currPos = self.musicPlayer.get_pos()
+		for index, timestamp in enumerate(self.timestamps):
+			if timestamp > currPos:
+				return index - 1
+		return len(self.timestamps) - 1
 		
