@@ -1,10 +1,10 @@
-from asyncore import read
 import json
-
+import os
 
 f1 = "lyrics/Fearless--Mr. Perfectly Fine.txt"
 f2 = "lyrics-compiled/Fearless--Mr. Perfectly Fine.txt"
-
+lyrics_dir = "./lyrics"
+lyrics_out_dir = "./lyrics-compiled"
 
 def read_file(FILE_IN):
 
@@ -46,8 +46,14 @@ def read_file(FILE_IN):
 			
 	
 	return {"words":words, "sections":sections}
+def convertLyrics(fin, fout):
+	with open(fout, 'w') as f:
+		f.write(json.dumps(
+			read_file(fin), indent=4
+		))
 
-with open(f2, 'w') as f:
-	f.write(json.dumps(
-		read_file(f1), indent=4
-	))
+for filename in os.listdir(lyrics_dir):
+	fin = os.path.join(lyrics_dir, filename)
+	fout = os.path.join(lyrics_out_dir, filename)
+	if os.path.isfile(fin) and filename.endswith('txt'):
+		convertLyrics(fin, fout)
