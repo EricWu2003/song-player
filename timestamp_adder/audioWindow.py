@@ -1,5 +1,7 @@
-from sqlite3 import Timestamp
 import pygame
+import json
+from os.path import exists
+
 
 class AudioWindow:
 	XMIN = 50
@@ -14,7 +16,7 @@ class AudioWindow:
 	MAXSCALE = 100
 	SCROLL_FACTOR = 1.07
 
-	def __init__(self, screen, musicPlayer, lyrics):
+	def __init__(self, screen, musicPlayer, lyrics, export_path = "./timestamp_adder/timestamps/Fearless--Mr. Perfectly Fine.json"):
 		self.screen = screen
 		self.musicPlayer = musicPlayer
 
@@ -24,6 +26,11 @@ class AudioWindow:
 		self.bigFont = pygame.font.Font('freesansbold.ttf', 32)
 		self.smallFont = pygame.font.Font('freesansbold.ttf', 17)
 		self.lyrics = lyrics
+		self.export_path = export_path
+		if exists(export_path):
+			print("Importing timestamps from previous save")
+			with open(export_path) as f:
+				self.timestamps = [i[0] for i in json.load(f)]
 	def draw(self):
 		pygame.draw.rect(self.screen, (0,0,0), AudioWindow.WIN_RECT)
 		for t in self.timestamps:
@@ -66,12 +73,14 @@ class AudioWindow:
 				# If we are somewhere in the middle
 				return
 			self.timestamps.append(self.musicPlayer.get_pos())
+		elif event.key == pygame.K_e: #if the 'e' key is pressed
+			self.exportTimestamps()
 
 	def handleLeftClickEvent(self, event):
 		# set the position of the music player to whereever the user clicked,
 		# if the click is within the range of the music
 		new_pos = self.convertScreenPosToTime(event.pos[0])
-		print(new_pos)
+		# print(new_pos)
 		if 0 < new_pos and new_pos < self.musicPlayer.length:
 			self.musicPlayer.set_pos(new_pos)
 
@@ -91,4 +100,9 @@ class AudioWindow:
 			if timestamp > currPos:
 				return index - 1
 		return len(self.timestamps) - 1
+	
+	def exportTimestamps(self):
+		with open(self.export_path, 'w') as f:
+			obj = list(zip(self.timestamps, self.lyrics))
+			f.write(json.dumps(obj, indent = 2))
 		
