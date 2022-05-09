@@ -1,5 +1,6 @@
 {
     "words": [
+        "--",
         "Well",
         "its",
         "a",
@@ -43,6 +44,7 @@
         "whatever",
         "you",
         "do",
+        "--",
         "And",
         "Ill",
         "do",
@@ -85,6 +87,7 @@
         "to",
         "finally",
         "win",
+        "--",
         "And",
         "well",
         "sing",
@@ -93,7 +96,6 @@
         "sing",
         "hallelujah",
         "Oh",
-        "oh",
         "So",
         "weve",
         "been",
@@ -139,6 +141,7 @@
         "dont",
         "need",
         "this",
+        "--",
         "But",
         "theres",
         "something",
@@ -192,7 +195,7 @@
         "sing",
         "hallelujah",
         "Oh",
-        "oh",
+        "--",
         "Tonight",
         "well",
         "stand",
@@ -226,6 +229,7 @@
         "up",
         "champions",
         "tonight",
+        "--",
         "It",
         "was",
         "the",
@@ -269,31 +273,32 @@
         "we",
         "sang",
         "hallelujah",
-        "Hallelujah"
+        "Hallelujah",
+        "--"
     ],
     "sections": {
         "Verse 1": [
             0,
-            51
+            53
         ],
         "Chorus 1": [
-            51,
-            94
+            53,
+            96
         ],
         "Verse 2": [
-            94,
-            150
+            96,
+            153
         ],
         "Chorus 2": [
-            150,
-            193
+            153,
+            196
         ],
         "Bridge": [
-            193,
-            226
+            196,
+            230
         ],
         "Chorus 3": [
-            226
+            230
         ]
     }
 }
