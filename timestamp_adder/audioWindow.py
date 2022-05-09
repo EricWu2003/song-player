@@ -95,6 +95,19 @@ class AudioWindow:
 			self.timestamps.append(self.musicPlayer.get_pos())
 		elif event.key == pygame.K_e: #if the 'e' key is pressed
 			self.exportTimestamps()
+		elif event.key == pygame.K_RIGHTBRACKET:
+			currPos = self.musicPlayer.get_pos()
+			for t in self.timestamps:
+				if t >= currPos:
+					self.musicPlayer.set_pos(t)
+					return
+		elif event.key == pygame.K_LEFTBRACKET:
+			currPos = self.musicPlayer.get_pos()
+			for t in reversed(self.timestamps):
+				if t <= currPos:
+					self.musicPlayer.set_pos(t)
+					return
+		
 
 	def handleLeftClickEvent(self, event):
 		# set the position of the music player to whereever the user clicked,
