@@ -16,7 +16,7 @@ class AudioWindow:
 	MAXSCALE = 100
 	SCROLL_FACTOR = 1.07
 
-	def __init__(self, screen, musicPlayer, lyrics, export_path = "./timestamp_adder/timestamps/Fearless--Mr. Perfectly Fine.json"):
+	def __init__(self, screen, musicPlayer, lyrics, export_path):
 		self.screen = screen
 		self.musicPlayer = musicPlayer
 
@@ -60,7 +60,7 @@ class AudioWindow:
 		
 		currWordIndex = self.getCurrWordIndex()
 		currWordText = self.bigFont.render(self.lyrics[currWordIndex], True, (0,0,0))
-		self.screen.blit(currWordText, (0,0))
+		self.screen.blit(currWordText, (AudioWindow.XMIN,0))
 		
 		nextFewWords = " ".join(self.lyrics[currWordIndex:currWordIndex+20])
 		nextFewWordsText = self.smallFont.render(nextFewWords, True, (0,0,0))
@@ -141,7 +141,12 @@ class AudioWindow:
 		return len(self.timestamps) - 1
 	
 	def exportTimestamps(self):
+		print(f"exporting to {self.export_path} ...")
 		with open(self.export_path, 'w') as f:
 			obj = list(zip(self.timestamps, self.lyrics))
 			f.write(json.dumps(obj, indent = 2))
-		
+		print("Done exporting.")
+	
+	def deleteAllTimestampsAfterCursor(self):
+		currPos = self.musicPlayer.get_pos()
+		self.timestamps = [x for x in self.timestamps if x < currPos]

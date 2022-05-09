@@ -7,12 +7,20 @@ pygame.init()
 pygame.mixer.init()
 
 screen = pygame.display.set_mode([1000, 300])
-pygame.display.set_caption('Fearless!')
-m = audioUtils.musicPlayer('./ogg/Fearless--Mr. Perfectly Fine.ogg')
 
-with open('./lyrics-compiled/Fearless--Mr. Perfectly Fine.txt') as f:
+ALBUM = "Fearless"
+SONG = "Breathe"
+pygame.display.set_caption(f'{ALBUM}--{SONG}')
+
+m = audioUtils.musicPlayer(f'./ogg/{ALBUM}--{SONG}.ogg')
+
+with open(f'./lyrics-compiled/{ALBUM}--{SONG}.txt') as f:
 	lyrics = json.load(f)['words']
-a = AudioWindow(screen, m, lyrics)
+a = AudioWindow(screen, m, lyrics, f'./timestamp_adder/timestamps/{ALBUM}--{SONG}.json')
+
+deleteButtonFont = pygame.font.Font('freesansbold.ttf', 22)
+deleteButtonWords = deleteButtonFont.render("Click to delete all timestamps after cursor", True, (0,0,0))
+deleteButtonRect = pygame.Rect((100, 200, 100, 22))
 
 running = True
 while running:
@@ -26,6 +34,9 @@ while running:
 				a.handleLeftClickEvent(event)
 			elif AudioWindow.WIN_RECT.collidepoint(event.pos) and (event.button == 4 or event.button == 5):
 				a.handleScrollEvent(event)
+			elif deleteButtonRect.collidepoint(event.pos) and event.button == 1:
+				a.deleteAllTimestampsAfterCursor()
+
 		elif event.type == pygame.MOUSEMOTION:
 			a.handleMouseMotionEvent(event)
 		elif event.type == pygame.MOUSEBUTTONUP:
@@ -33,6 +44,9 @@ while running:
 
 
 	screen.fill((255, 255, 255))
+
+	screen.blit(deleteButtonWords, deleteButtonRect)
+
 	a.draw()
 
 	pygame.display.flip()

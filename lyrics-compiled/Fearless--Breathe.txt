@@ -1,5 +1,6 @@
 {
     "words": [
+        "--",
         "I",
         "see",
         "your",
@@ -11,6 +12,7 @@
         "I",
         "drive",
         "away",
+        "--",
         "Cause",
         "none",
         "of",
@@ -22,6 +24,7 @@
         "end",
         "that",
         "way",
+        "--",
         "People",
         "are",
         "people",
@@ -31,6 +34,7 @@
         "change",
         "our",
         "minds",
+        "--",
         "But",
         "its",
         "killing",
@@ -43,10 +47,7 @@
         "all",
         "this",
         "time",
-        "Mmmm",
-        "mmmmmmmm",
-        "Mmmm",
-        "mmmmmmmm",
+        "--",
         "The",
         "music",
         "starts",
@@ -58,6 +59,7 @@
         "a",
         "sad",
         "movie",
+        "--",
         "Its",
         "the",
         "kind",
@@ -68,6 +70,7 @@
         "really",
         "wanna",
         "see",
+        "--",
         "Cause",
         "its",
         "tragedy",
@@ -77,6 +80,7 @@
         "bring",
         "you",
         "down",
+        "--",
         "Now",
         "I",
         "dont",
@@ -87,6 +91,7 @@
         "without",
         "you",
         "around",
+        "--",
         "And",
         "we",
         "know",
@@ -134,6 +139,7 @@
         "I",
         "have",
         "to",
+        "--",
         "Never",
         "wanted",
         "this",
@@ -142,6 +148,7 @@
         "see",
         "you",
         "hurt",
+        "--",
         "Every",
         "little",
         "bump",
@@ -152,6 +159,7 @@
         "tried",
         "to",
         "swerve",
+        "--",
         "But",
         "people",
         "are",
@@ -162,6 +170,7 @@
         "doesnt",
         "work",
         "out",
+        "--",
         "And",
         "nothin",
         "we",
@@ -220,6 +229,7 @@
         "I",
         "have",
         "to",
+        "--",
         "Its",
         "2",
         "AM",
@@ -258,6 +268,7 @@
         "easy",
         "for",
         "me",
+        "--",
         "And",
         "we",
         "know",
@@ -300,80 +311,70 @@
         "I",
         "have",
         "to",
-        "Breathe",
-        "without",
-        "you",
-        "but",
-        "I",
-        "have",
-        "to",
-        "Im",
-        "sorry",
-        "Im",
-        "sorry",
-        "Mmm",
-        "Im",
-        "sorry",
-        "Yeah",
-        "yeah",
+        "--",
         "Im",
         "sorry",
         "Im",
         "sorry",
         "Im",
         "sorry",
-        "Ooh",
-        "ooh",
         "Im",
-        "sorry"
+        "sorry",
+        "Im",
+        "sorry",
+        "Im",
+        "sorry",
+        "Im",
+        "sorry",
+        "--"
     ],
     "sections": {
         "Verse 1": [
             0,
-            43
-        ],
-        "Break 1": [
-            43,
             47
         ],
-        "Verse 2": [
+        "Break 1": [
             47,
-            87
+            48
+        ],
+        "Verse 2": [
+            48,
+            92
         ],
         "Pre-Chorus 1": [
-            87,
-            117
+            92,
+            122
         ],
         "Chorus 1": [
-            117,
-            134
+            122,
+            139
         ],
         "Verse 3": [
-            134,
-            173
+            139,
+            182
         ],
         "Pre-Chorus 2": [
-            173,
-            203
+            182,
+            212
         ],
         "Chorus 2": [
-            203,
-            220
+            212,
+            230
         ],
         "Bridge": [
-            220,
-            258
+            230,
+            269
         ],
         "Pre-Chorus 3": [
-            258,
-            277
+            269,
+            288
         ],
         "Chorus 3": [
-            277,
-            307
+            288,
+            312
         ],
         "Outro": [
-            307
+            312
         ]
     }
 }
