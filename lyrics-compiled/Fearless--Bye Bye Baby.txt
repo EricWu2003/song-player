@@ -1,5 +1,6 @@
 {
     "words": [
+        "--",
         "It",
         "wasnt",
         "just",
@@ -37,6 +38,7 @@
         "this",
         "way",
         "again",
+        "--",
         "Lost",
         "in",
         "the",
@@ -58,6 +60,7 @@
         "but",
         "I",
         "cant",
+        "--",
         "Bye",
         "bye",
         "to",
@@ -99,12 +102,14 @@
         "couldnt",
         "keep",
         "me",
+        "--",
         "Bye",
         "bye",
         "baby",
         "Bye",
         "bye",
         "baby",
+        "--",
         "The",
         "picture",
         "frame",
@@ -124,6 +129,7 @@
         "on",
         "the",
         "dash",
+        "--",
         "Then",
         "back",
         "to",
@@ -141,6 +147,7 @@
         "wed",
         "always",
         "have",
+        "--",
         "Guess",
         "I",
         "never",
@@ -163,6 +170,7 @@
         "of",
         "your",
         "past",
+        "--",
         "Bye",
         "bye",
         "to",
@@ -204,9 +212,11 @@
         "couldnt",
         "keep",
         "me",
+        "--",
         "Bye",
         "bye",
         "baby",
+        "--",
         "And",
         "theres",
         "so",
@@ -243,6 +253,7 @@
         "how",
         "this",
         "ends",
+        "--",
         "Bye",
         "bye",
         "to",
@@ -284,6 +295,7 @@
         "couldnt",
         "keep",
         "me",
+        "--",
         "Bye",
         "bye",
         "to",
@@ -337,40 +349,42 @@
         "gonna",
         "keep",
         "me",
+        "--",
         "Bye",
         "bye",
         "baby",
         "Bye",
         "bye",
-        "baby"
+        "baby",
+        "--"
     ],
     "sections": {
         "Verse 1": [
             0,
-            58
+            61
         ],
         "Chorus 1": [
-            58,
-            105
+            61,
+            110
         ],
         "Verse 2": [
-            105,
-            163
+            110,
+            171
         ],
         "Chorus 2": [
-            163,
-            207
+            171,
+            217
         ],
         "Verse 3": [
-            207,
-            243
+            217,
+            254
         ],
         "Chorus 3": [
-            243,
-            284
+            254,
+            296
         ],
         "Chorus 4": [
-            284
+            296
         ]
     }
 }
