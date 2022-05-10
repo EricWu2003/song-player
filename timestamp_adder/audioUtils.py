@@ -41,12 +41,14 @@ class musicPlayer:
         return (self.music.get_pos() - self.initial_get_pos + self.start_pos) % (self.length)
     def quit(self):
         pygame.mixer.quit()
-    def play_range(self, start_time, end_time):
-        # plays the audio starting at start_time, ending at end_time (both in milliseconds)
-        # note that this is blocking
-        self.set_pos(start_time)
-        self.music.unpause()
+
+    @classmethod
+    def playPortion(cls, filepath, start_time, end_time):
+        pygame.mixer.init()
+        pygame.mixer.music.load(filepath)
+        pygame.mixer.music.play(loops=-1)
+        pygame.mixer.music.set_pos(start_time/1000)
         sleep((end_time - start_time)/1000)
-        self.music.pause()
+        pygame.mixer.music.pause()
 
-
+        pygame.mixer.quit()

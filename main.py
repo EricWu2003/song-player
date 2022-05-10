@@ -1,17 +1,15 @@
-from timestamp_adder import audioUtils
 import pygame
 import json
 import os
+from timestamp_adder.audioUtils import musicPlayer
 
 
 def play(album, song, startWordIndex, endWordIndex):
 	pygame.display.set_caption(f'{album}--{song}')
-
-	m = audioUtils.musicPlayer(f'./ogg/{album}--{song}.ogg')
-
 	with open(f'./timestamp_adder/timestamps/{album}--{song}.json') as f:
 		timestamps = [x[0] for x in json.load(f)]
-	m.play_range(timestamps[startWordIndex], timestamps[endWordIndex])
+	
+	musicPlayer.playPortion(f'./ogg/{album}--{song}.ogg', timestamps[startWordIndex], timestamps[endWordIndex])
 
 def searchByCharacter(characterStr):
 	songs = []
@@ -33,7 +31,7 @@ def searchByCharacter(characterStr):
 
 searchByCharacter("mpf")
 
-play("Fearless", "Mr. Perfectly Fine", 403, 407)
+# play("Fearless", "Mr. Perfectly Fine", 403, 407)
 
-# for index in (1, 91, 129, 232, 270, 364, 403):
-# 	play("Fearless", "Mr. Perfectly Fine", index, index + 3)
+for index in (1, 91, 129, 232, 270, 364, 403):
+	play("Fearless", "Mr. Perfectly Fine", index, index + 3)
