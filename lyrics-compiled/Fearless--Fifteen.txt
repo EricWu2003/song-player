@@ -1,5 +1,6 @@
 {
     "words": [
+        "--",
         "You",
         "take",
         "a",
@@ -19,6 +20,7 @@
         "very",
         "first",
         "day",
+        "--",
         "You",
         "say",
         "hi",
@@ -38,6 +40,7 @@
         "of",
         "everybodys",
         "way",
+        "--",
         "Its",
         "your",
         "freshman",
@@ -55,6 +58,7 @@
         "in",
         "this",
         "town",
+        "--",
         "Hopin",
         "one",
         "of",
@@ -74,7 +78,9 @@
         "seen",
         "you",
         "around",
+        "--",
         "before",
+        "--",
         "Cause",
         "when",
         "youre",
@@ -118,7 +124,10 @@
         "youre",
         "gonna",
         "be",
+        "--",
+        "At",
         "Fifteen",
+        "--",
         "You",
         "sit",
         "in",
@@ -135,6 +144,7 @@
         "youre",
         "best",
         "friends",
+        "--",
         "Laughin",
         "at",
         "the",
@@ -154,6 +164,7 @@
         "as",
         "we",
         "can",
+        "--",
         "And",
         "then",
         "youre",
@@ -225,7 +236,7 @@
         "head",
         "spin",
         "round",
-        "But",
+        "Well",
         "in",
         "your",
         "life",
@@ -241,13 +252,13 @@
         "the",
         "football",
         "team",
-        "But",
         "I",
         "didnt",
         "know",
         "it",
         "at",
         "fifteen",
+        "--",
         "When",
         "all",
         "you",
@@ -268,6 +279,7 @@
         "you",
         "know",
         "now",
+        "--",
         "Back",
         "then",
         "I",
@@ -286,6 +298,7 @@
         "dreams",
         "of",
         "mine",
+        "--",
         "And",
         "Abigail",
         "gave",
@@ -299,10 +312,12 @@
         "changed",
         "his",
         "mind",
+        "--",
         "And",
         "we",
         "both",
         "cried",
+        "--",
         "Cause",
         "when",
         "youre",
@@ -329,6 +344,7 @@
         "before",
         "you",
         "fall",
+        "But",
         "Ive",
         "found",
         "time",
@@ -355,8 +371,10 @@
         "supposed",
         "to",
         "be",
+        "--",
         "At",
         "fifteen",
+        "--",
         "Lalala",
         "lalala",
         "lalalala",
@@ -369,6 +387,7 @@
         "very",
         "first",
         "day",
+        "--",
         "Take",
         "a",
         "deep",
@@ -383,39 +402,40 @@
         "walk",
         "through",
         "the",
-        "doors"
+        "doors",
+        "--"
     ],
     "sections": {
         "Verse 1": [
             0,
-            75
+            81
         ],
         "Chorus 1": [
-            75,
-            119
+            81,
+            128
         ],
         "Verse 2": [
-            119,
-            197
+            128,
+            208
         ],
         "Chorus 2": [
-            197,
-            248
+            208,
+            259
         ],
         "Bridge": [
-            248,
-            303
+            259,
+            318
         ],
         "Chorus 3": [
-            303,
-            357
+            318,
+            375
         ],
         "Post-Chorus": [
-            357,
-            365
+            375,
+            383
         ],
         "Outro": [
-            365
+            383
         ]
     }
 }
