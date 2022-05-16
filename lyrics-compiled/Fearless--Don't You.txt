@@ -1,5 +1,6 @@
 {
     "words": [
+        "--",
         "Hey",
         "I",
         "knew",
@@ -8,6 +9,7 @@
         "into",
         "you",
         "somewhere",
+        "--",
         "Its",
         "been",
         "a",
@@ -17,6 +19,7 @@
         "mean",
         "to",
         "stare",
+        "--",
         "I",
         "heard",
         "shes",
@@ -29,6 +32,7 @@
         "make",
         "you",
         "happy",
+        "--",
         "But",
         "dont",
         "you",
@@ -88,6 +92,7 @@
         "could",
         "hate",
         "you",
+        "--",
         "Ive",
         "tried",
         "but",
@@ -97,6 +102,7 @@
         "I",
         "cant",
         "do",
+        "--",
         "My",
         "heart",
         "knows",
@@ -110,6 +116,7 @@
         "wouldnt",
         "do",
         "this",
+        "--",
         "But",
         "dont",
         "you",
@@ -240,39 +247,40 @@
         "you",
         "Ah",
         "ah",
-        "ah"
+        "ah",
+        "--"
     ],
     "sections": {
         "Verse 1": [
             0,
-            29
+            33
         ],
         "Chorus 1": [
-            29,
-            72
+            33,
+            76
         ],
         "Post-Chorus 1": [
-            72,
-            79
+            76,
+            83
         ],
         "Verse 2": [
-            79,
-            110
+            83,
+            117
         ],
         "Chorus 2": [
-            110,
-            153
+            117,
+            160
         ],
         "Bridge": [
-            153,
-            184
+            160,
+            191
         ],
         "Chorus 3": [
-            184,
-            232
+            191,
+            239
         ],
         "Outro": [
-            232
+            239
         ]
     }
 }

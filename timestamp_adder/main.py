@@ -9,7 +9,7 @@ pygame.mixer.init()
 screen = pygame.display.set_mode([1000, 300])
 
 ALBUM = "Fearless"
-SONG = "Mr. Perfectly Fine"
+SONG = "Don't You"
 pygame.display.set_caption(f'{ALBUM}--{SONG}')
 
 m = audioUtils.musicPlayer(f'./ogg/{ALBUM}--{SONG}.ogg')

@@ -1,5 +1,6 @@
 {
     "words": [
+        "--",
         "I",
         "could",
         "go",
@@ -7,6 +8,7 @@
         "to",
         "every",
         "laugh",
+        "--",
         "But",
         "I",
         "dont",
@@ -24,6 +26,7 @@
         "to",
         "your",
         "door",
+        "--",
         "But",
         "I",
         "dont",
@@ -47,6 +50,7 @@
         "the",
         "reasons",
         "why",
+        "--",
         "And",
         "let",
         "me",
@@ -54,6 +58,7 @@
         "what",
         "you",
         "find",
+        "--",
         "Ill",
         "leave",
         "my",
@@ -75,6 +80,7 @@
         "right",
         "here",
         "hoping",
+        "--",
         "That",
         "youll",
         "come",
@@ -82,6 +88,7 @@
         "with",
         "the",
         "rain",
+        "--",
         "I",
         "could",
         "stand",
@@ -91,6 +98,7 @@
         "you",
         "a",
         "song",
+        "--",
         "But",
         "I",
         "dont",
@@ -111,6 +119,7 @@
         "you",
         "by",
         "heart",
+        "--",
         "And",
         "you",
         "dont",
@@ -134,6 +143,7 @@
         "put",
         "you",
         "here",
+        "--",
         "And",
         "dont",
         "wait",
@@ -142,6 +152,7 @@
         "sky",
         "to",
         "clear",
+        "--",
         "Ill",
         "leave",
         "my",
@@ -164,6 +175,7 @@
         "right",
         "here",
         "hoping",
+        "--",
         "That",
         "youll",
         "come",
@@ -171,6 +183,7 @@
         "with",
         "the",
         "rain",
+        "--",
         "Ive",
         "watched",
         "you",
@@ -187,6 +200,7 @@
         "I",
         "can",
         "say",
+        "--",
         "Ill",
         "leave",
         "my",
@@ -208,6 +222,7 @@
         "right",
         "here",
         "hoping",
+        "--",
         "That",
         "youll",
         "come",
@@ -215,6 +230,7 @@
         "with",
         "the",
         "rain",
+        "--",
         "I",
         "could",
         "go",
@@ -222,49 +238,51 @@
         "to",
         "every",
         "laugh",
+        "--",
         "But",
         "I",
         "dont",
         "wanna",
         "go",
         "there",
-        "anymore"
+        "anymore",
+        "--"
     ],
     "sections": {
         "Verse 1": [
             0,
-            31
+            34
         ],
         "Pre-Chorus 1": [
-            31,
-            54
+            34,
+            59
         ],
         "Chorus 1": [
-            54,
-            82
+            59,
+            89
         ],
         "Verse 2": [
-            82,
-            119
+            89,
+            128
         ],
         "Pre-Chorus 2": [
-            119,
-            142
+            128,
+            153
         ],
         "Chorus 2": [
-            142,
-            171
+            153,
+            184
         ],
         "Bridge": [
-            171,
-            187
+            184,
+            201
         ],
         "Chorus 3": [
-            187,
-            215
+            201,
+            231
         ],
         "Outro": [
-            215
+            231
         ]
     }
 }
